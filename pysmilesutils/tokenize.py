@@ -632,7 +632,7 @@ class SMILESAtomTokenizer(SMILESTokenizer):
         smiles = smiles or []
 
         with warnings.catch_warnings(record=smiles != []):
-            super().__init__(*args, **kwargs)
+            super().__init__(*args, **kwargs, tokens=tokens, smiles=smiles, regex_tokens_patterns=regex_tokens_patterns)
             super().add_tokens(["Br", "Cl"])
             super().add_regex_token_patterns(regex_tokens_patterns + [r"\[[^\]]*\]"])
         self.re_block_atom = re.compile(r"(Zn|Sn|Sc|[A-Z][a-z]?(?<!c|n|o|p|s)|se|as|.)")
